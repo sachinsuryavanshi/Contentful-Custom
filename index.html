@@ -1,1 +1,19 @@
-i
+<html>
+  <head><script src="https://unpkg.com/contentful-ui-extensions-sdk"></script></head>
+  <body>
+    <input id="input" />
+    <script>
+      window.contentfulExtension.init(function (extension) {
+        const input = document.getElementById('input');
+        input.value = extension.field.getValue() || '';
+
+        input.addEventListener('input', function () {
+          extension.field.setValue(input.value);
+        });
+
+        extension.window.startAutoResizer();
+      });
+    </script>
+  </body>
+</html>
+
